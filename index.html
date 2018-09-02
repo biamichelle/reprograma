@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+</head>
+<body>
+
+<div id="pagina">
+    
+    <h2>Quiz</h2>
+
+    <div id="q1" class="questao">
+        <h3>O que sigfnifica o html?</h3>
+        <ul>
+            <li><input type="radio" name="q1" value="a"> A. Hyperlinks and Text Markup Lankguage</li>
+            <li><input type="radio" name="q1" value="b"> B. Hyper Text Markup Language</li>
+            <li><input type="radio" name="q1" value="c"> C. Home Tool Markup Language</li>
+        </ul>
+    </div>
+
+    <div id="q2" class="questao">
+        <h3>O que sigfnifica a sigla CSS?</h3>
+        <ul>
+            <li><input type="radio" name="q2" value="a"> A. Creative Style Sheets</li>
+            <li><input type="radio" name="q2" value="b"> B. Cascading Style Sheets</li>
+            <li><input type="radio" name="q2" value="c"> C. Colorful Style Sheets</li>
+        </ul>
+    </div>
+
+    <div id="q3" class="questao">
+        <h3>Dentro de qual elemento HTML nós colocamos o JavaScript?</h3>
+        <ul>
+            <li><input type="radio" name="q3" value="a"> A. script</li>
+            <li><input type="radio" name="q3" value="b"> B. js</li>
+            <li><input type="radio" name="q3" value="c"> C. javascript</li>
+        </ul>
+    </div>
+
+    <div id="respostas"></div>
+
+    <div id="cachorrinho"><img src='cachorrinho.jpeg'></div>
+
+</div>
+
+<script type="text/javascript">
+
+function check() {
+
+    var r1 = r2 = r3 = null;
+
+    if (document.querySelector('input[name="q1"]:checked')) {
+        r1 = document.querySelector('input[name="q1"]:checked').value;
+    }
+    if (document.querySelector('input[name="q2"]:checked')) {
+        r2 = document.querySelector('input[name="q2"]:checked').value;
+    }
+    if (document.querySelector('input[name="q3"]:checked')) {
+        r3 = document.querySelector('input[name="q3"]:checked').value;
+    }
+
+    if(r1 && r2 && r3) {
+        // Calcula respostas certas.
+        var respostasCertas = 0;
+        if (r1 == 'b') {
+            respostasCertas++;
+        } 
+        if (r2 == 'b') {
+            respostasCertas++;
+        } 
+        if (r3 == 'a') {
+            respostasCertas++;
+        } 
+        document.getElementById("respostas").innerHTML = 'Respostas certas: ' + respostasCertas;
+    
+        if (respostasCertas == 3) {
+            document.getElementById("cachorrinho").style.display = "block";
+        }
+    }
+
+    setTimeout(check, 1000);
+}
+
+check();
+
+</script>
+
+<style>
+body {
+    font-family: Arial;
+    color: #212529;
+    background-color: #f8f9fa;
+}
+
+#pagina {
+    margin: auto;
+    width: 375px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+#cachorrinho {
+    display: none;
+}
+</style>
+
+</body>
+</html>
